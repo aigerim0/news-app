@@ -1,0 +1,22 @@
+.footer{
+    padding: 30px;
+    background-color: #fa7474;
+
+}
+.footer-descs{
+    display: flex;
+
+}
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.footer-desc p{
+    color: black;
+    margin-left: 3px;
+}
+.footer-icon{
+    color: black;
+    margin-top: 2px;
+}

@@ -1,0 +1,27 @@
+.header{
+    padding: 30px;
+    background-color: #fa7474;
+}
+.nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-bar-item{
+    margin-left: 20px;
+    font-size: 18px;
+    color: #A60000;
+    transition: 1s;
+}
+.nav-bar-item:hover{
+    color: #000;
+
+}
+.logo{
+    color: #A60000;
+}
+.nav-logo{
+    display: flex;
+align-items: center;
+    justify-content: space-between;
+}

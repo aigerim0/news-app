@@ -1,0 +1,11 @@
+.news-img{
+  height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.news-title{
+    text-align: center;
+    margin: 10px;
+    color: #A60000;
+}
