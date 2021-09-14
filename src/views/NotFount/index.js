@@ -1,10 +1,12 @@
 import React from 'react';
 
+
 const NotFount = () => {
     return (
-        <div>
-            Страница не найдена!
-        </div>
+        <h1 className='text-center'>
+            Страница не найдена!<br/>
+            404
+        </h1>
     );
 };
 

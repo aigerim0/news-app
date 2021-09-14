@@ -26,5 +26,11 @@ a{
     border: none;
     background: none;
     font-size: 32px;
+    justify-content: center;
 }
+.spinner-border {
+    display: block;
+    margin: 100px auto;
+}
+
 

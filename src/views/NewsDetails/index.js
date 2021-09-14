@@ -1,32 +1,36 @@
 import React, {useEffect, useState} from 'react';
-import Layout from "../../Layout";
+
 import {useParams,useHistory} from 'react-router-dom'
 import axios from "axios";
 import './style.css'
+import NotFount from "../NotFount";
 
 const NewsDetails = () => {
     const [newDetail,setNewDetails] = useState({})
     const [isLoading,setIsLoading] = useState(true)
     const params = useParams()
     const history = useHistory()
+    const [notFount,setNotFount] = useState(false)
     useEffect(() => {
         axios(`https://613b7037110e000017a45616.mockapi.io/api/news/${params.id}`)
-            .then(({data}) => {
-                setNewDetails(data)
-                setIsLoading(false)
-            })
+            .then(({data}) => setNewDetails(data))
+            .catch(() => setNotFount(true))
+            .finally(() =>  setIsLoading(false) )
     } , [params])
     const backBtn = () => {
         history.goBack()
     }
-    if (isLoading){
-        return   <div className="spinner-border text-dark isloading" role="status">
-            <span className="visually-hidden">Loading...</span>
-        </div>
+    if (isLoading ){
+        return <div className="spinner-border text-dark isloading  " role="status">
+                <span className="visually-hidden  ">Loading...</span>
+            </div>
 
+
+    }if(notFount){
+        return  <NotFount/>
     }
     return (
-        <Layout>
+        <div>
             <button className='back-btn' onClick={backBtn}><i className='bx bx-arrow-back'></i></button>
             <div className='newDetail-title'>
            <h2 >{newDetail.title}</h2>
@@ -52,7 +56,7 @@ const NewsDetails = () => {
             <div className='newDetail-div-btn' >
                 <button className='newDetail-btn'>Отправить</button>
             </div>
-        </Layout>
+        </div>
     );
 };
 

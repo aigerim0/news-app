@@ -5,18 +5,21 @@ import NewsDetails from "./views/NewsDetails";
 import NotFount from "./views/NotFount";
 import Registration from "./views/Registration";
 import LogIn from "./views/LogIn";
+import Layout from "./Layout";
 
 function App() {
     return (
         <Router>
+       <Layout>
            <Switch>
                <Route exact path='/'> <Home/> </Route>
-               <Route path='/news'> <News/> </Route>
-               <Route path='/new/:id'> <NewsDetails/> </Route>
+               <Route exact path='/news'> <News/> </Route>
+               <Route path='/news/:id'> <NewsDetails/> </Route>
                <Route path='/login'><LogIn/></Route>
                <Route path='/registration'><Registration/></Route>
                <Route path='*'><NotFount/></Route>
            </Switch>
+       </Layout>
         </Router>
 
     );

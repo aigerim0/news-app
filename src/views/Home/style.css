@@ -1,0 +1,13 @@
+.home{
+  margin-top: 40px;
+}
+.home-img{
+    height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+.home-title{
+    text-align: center;
+    margin: 10px;
+    color: #A60000;
+}
