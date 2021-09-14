@@ -10,13 +10,16 @@ import {Link} from "react-router-dom";
 const Home = () => {
     const [hero, setHero] = useState([])
     const [isLoading,setIsLoading] = useState(true)
-    const [notFount,setNotFount] = useState(false)
+
 
     useEffect(() => {
         axios('https://613b7037110e000017a45616.mockapi.io/api/news')
-            .then(({data}) => setHero(data))
-            .catch(() => setNotFount(true))
-            .finally(() =>  setIsLoading(false) )
+            .then(({data}) => {
+                setHero(data)
+                setIsLoading(false)
+            })
+
+
     }, [])
     if (isLoading){
       return  <div className="spinner-border text-dark " role="status">
