@@ -7,6 +7,7 @@ import Registration from "./views/Registration";
 import LogIn from "./views/LogIn";
 import Layout from "./Layout";
 import Claim from "./views/Claim";
+import Students from "./views/Students";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                <Route path='/news/:id'> <NewsDetails/> </Route>
                <Route path='/login'><LogIn/></Route>
                <Route path='/claim'><Claim/></Route>
+               <Route path='/students'><Students/></Route>
                <Route path='/registration'><Registration/></Route>
                <Route path='*'><NotFount/></Route>
            </Switch>

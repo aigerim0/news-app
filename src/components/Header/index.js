@@ -39,6 +39,7 @@ e.preventDefault()
             <NavLink to={'/news'} className='nav-bar-item'>Новости</NavLink>
             <NavLink to={'/login'} className='nav-bar-item'>Войти</NavLink>
             <NavLink to={'/claim'} className='nav-bar-item'>Заявки</NavLink>
+            <NavLink to={'/students'} className='nav-bar-item'>Студенты</NavLink>
             <NavLink to={'/registration'} className='nav-bar-item'>Зарегистироваться</NavLink>
             <button onClick={() => setIsOpen(true)} className='callback'>Связаться со мной</button>
         </div>
