@@ -7,16 +7,19 @@ import StudentItem from "../../components/StudentItem";
 import Buttons from "../../components/Buttons";
 import FormInput from "../../components/FormInput";
 
+
 const Students = () => {
     const [students, setStudents] = useState([])
     const [showModal, setShowModal] = useState(false);
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+    const {reset} = useForm();
+    const {register, handleSubmit, formState: {errors}} = useForm();
     useEffect(() => {
         axios('https://613b7037110e000017a45616.mockapi.io/api/students')
             .then(({data}) => setStudents(data))
     }, [])
     const closeModal = () => {
         setShowModal(false)
+
     }
     const sentData = (data) => {
         axios.post('https://613b7037110e000017a45616.mockapi.io/api/students', data)
@@ -26,9 +29,19 @@ const Students = () => {
                 reset()
             })
     }
-    const deleteStudents = (id) => {
+    const deleteStudents = (id,) => {
         axios.delete(`https://613b7037110e000017a45616.mockapi.io/api/students/${id}`)
             .then(() => setStudents(students.filter(el => el.id !== id)))
+    }
+
+    const updateTodo = (data, id) => {
+        axios.put(`https://613b7037110e000017a45616.mockapi.io/api/students/${id}`, data)
+            .then(({data}) => {
+                setStudents(students.map(el => el.id === id ?{...students,data}: el))
+                setShowModal(false)
+                reset()
+            })
+
     }
     const customStyles = {
         content: {
@@ -40,11 +53,6 @@ const Students = () => {
             transform: 'translate(-50%, -50%)',
         },
     };
-    const updateTodo = (modified, id) => {
-        axios.put(`https://613b7037110e000017a45616.mockapi.io/api/students/${id}`, {name: modified})
-            .then(({data}) => setStudents(students.map(el => el.id === id ? data : el)))
-
-    }
     return (
         <div>
             <table className='table'>
@@ -64,7 +72,13 @@ const Students = () => {
                 </tr>
                 {
                     students.map((item, idx) =>
-                        <StudentItem deleteStudents={deleteStudents} updateTodo={updateTodo}  key={item.id}  item={item} idx={idx}/>
+                        <StudentItem closeModal={closeModal}
+                                     sentData={sentData}
+                                     deleteStudents={deleteStudents}
+                                     updateTodo={updateTodo}
+                                     key={item.id}
+                                     item={item}
+                                     idx={idx}/>
                     )
                 }
             </table>

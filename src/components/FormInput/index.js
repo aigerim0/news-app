@@ -1,10 +1,10 @@
 import React from 'react';
 
-const FormInput = ({label,name,required,register,errors}) => {
+const FormInput = ({label, name, required, register, errors,item}) => {
     return (
         <>
             <label className='label' htmlFor={name}><b> {label}</b></label>
-            <input className='w-100 students-input' type='text' id={name}
+            <input  className='w-100 students-input' type='text' id={name}
                    {...register(name, {required: true})}
 
             />
